@@ -17,7 +17,7 @@ contract Assignment8Test is Test {
         assignment.mintNFT(temporaryUriForTesting);
 
         // Check ownership of the minted NFT
-        address owner = assignment.ownerOf(1);
+        address owner = assignment.ownerOf(0);
         assertEq(owner, address(this), "Owner of token ID 1 should be the test contract");
     }
 
