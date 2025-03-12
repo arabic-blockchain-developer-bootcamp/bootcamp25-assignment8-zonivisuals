@@ -6,6 +6,7 @@ import {Assignment8} from "../src/Assignment8.sol";
 
 contract Assignment8Test is Test {
     Assignment8 assignment;
+    string public temporaryUriForTesting = "https://azure-yearning-shrew-339.mypinata.cloud/ipfs/bafkreifo3hg2hnig5ojay3tonmf6un3qlxqjienffsmpkq5cfpept2fake";
 
     function setUp() public {
         assignment = new Assignment8();
@@ -13,7 +14,7 @@ contract Assignment8Test is Test {
 
     function testMintNFTByOwner() public {
         // Mint an NFT to the test contract (owner calling)
-        assignment.mintNFT(address(this));
+        assignment.mintNFT(temporaryUriForTesting);
 
         // Check ownership of the minted NFT
         address owner = assignment.ownerOf(1);
@@ -27,6 +28,6 @@ contract Assignment8Test is Test {
 
         // Expect the transaction to revert
         vm.expectRevert();
-        assignment.mintNFT(nonOwner);
+        assignment.mintNFT(temporaryUriForTesting);
     }
 }
